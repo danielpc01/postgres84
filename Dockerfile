@@ -19,7 +19,8 @@ RUN gpg --keyserver pgp.mit.edu --recv-keys \
 
 RUN yum -y install postgresql-server; yum clean all; chkconfig postgresql on
 
-ENV LANG en_US.utf8
+RUN localedef -i ja_JP -c -f UTF-8 -A /usr/share/locale/locale.alias ja_JP.UTF-8
+ENV LANG ja_JP.UTF-8
 
 RUN mkdir /docker-entrypoint-initdb.d
 
